@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark professional theme for video conferencing */
+    --background: 220 16% 10%;
+    --foreground: 210 40% 96%;
+
+    --card: 220 16% 14%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 220 16% 12%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 200 95% 50%;
+    --primary-foreground: 220 16% 10%;
+
+    --secondary: 220 16% 18%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 220 14% 20%;
+    --muted-foreground: 215 20% 60%;
+
+    --accent: 170 80% 45%;
+    --accent-foreground: 220 16% 10%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 145 65% 42%;
+    --success-foreground: 210 40% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 16% 10%;
+
+    --border: 220 14% 22%;
+    --input: 220 14% 22%;
+    --ring: 200 95% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(200 95% 50%), hsl(170 80% 45%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 16% 12%), hsl(220 16% 8%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(200 95% 50% / 0.15), transparent 60%);
+    
+    --shadow-glow: 0 0 40px hsl(200 95% 50% / 0.3);
+    --shadow-soft: 0 4px 24px hsl(220 16% 4% / 0.4);
+    --shadow-card: 0 8px 32px hsl(220 16% 4% / 0.6);
+    
+    --sidebar-background: 220 16% 12%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 200 95% 50%;
+    --sidebar-primary-foreground: 220 16% 10%;
+    --sidebar-accent: 220 14% 18%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 220 14% 22%;
+    --sidebar-ring: 200 95% 50%;
+
+    /* Video specific */
+    --video-bg: 220 20% 8%;
+    --video-border: 220 14% 25%;
+    --controls-bg: 220 16% 12% / 0.9;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-dark {
+    @apply bg-background/90 backdrop-blur-xl border border-border/30;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .video-tile {
+    @apply rounded-xl overflow-hidden relative;
+    background: hsl(var(--video-bg));
+    border: 1px solid hsl(var(--video-border));
+  }
+
+  .control-bar {
+    background: hsl(var(--controls-bg));
+    backdrop-filter: blur(20px);
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
