@@ -39,7 +39,7 @@ Coming Soon...
 - Express.js
 
 ### Database
-- MongoDB
+- PostgreSQL
 
 ### Real-Time Communication
 - WebSocket / Socket.io
